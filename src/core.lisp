@@ -1,10 +1,9 @@
-(mgl-pax-minimal:define-package :humanize-duration
+(uiop:define-package :humanize-duration
   (:use #:cl)
   (:nicknames :humanize-duration/core)
   (:import-from #:local-time-duration)
   (:import-from #:humanize-duration/ru)
-  (:import-from #:mgl-pax-minimal
-                #:section
+  (:import-from #:40ants-doc
                 #:defsection)
   (:import-from #:with-output-to-stream
                 #:with-output-to-stream))

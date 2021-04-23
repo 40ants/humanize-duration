@@ -1,6 +1,6 @@
-(mgl-pax:define-package #:humanize-duration/ru
+(uiop:define-package #:humanize-duration/ru
   (:use #:cl)
-  (:import-from #:mgl-pax-minimal
+  (:import-from #:40ants-doc
                 #:defsection)
   (:export
    #:format-part))
@@ -31,17 +31,17 @@
 
    Here is how FORMAT-PART is defined in the code:
 "
-  (format-part (pax:include (:start (format-part function)
-                             :end (%end-of-format-part% variable))
-                            :header-nl "```commonlisp"
-                            :footer-nl "```"))
+  (format-part (include (:start (format-part function)
+                         :end (%end-of-format-part% variable))
+                         :header-nl "```commonlisp"
+                         :footer-nl "```"))
   
   "Russian version uses internal helper, to choose a correct word form:"
 
-  (choose-form (pax:include (:start (choose-form function)
-                             :end (%end-of-choose-form% variable))
-                            :header-nl "```commonlisp"
-                            :footer-nl "```"))
+  (choose-form (include (:start (choose-form function)
+                         :end (%end-of-choose-form% variable))
+                         :header-nl "```commonlisp"
+                         :footer-nl "```"))
 
   "Applied to a different numbers it produces the following:
 
