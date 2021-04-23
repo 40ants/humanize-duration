@@ -175,7 +175,7 @@ Russian version uses internal helper, to choose a correct word form:
 
 ```commonlisp
 (defun choose-form (n &rest forms)
-  "This function is bassed on this gettext formula:
+  "This function is based on this gettext formula:
 
    ```
    Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;
