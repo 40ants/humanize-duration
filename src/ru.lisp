@@ -29,7 +29,7 @@
    \"5 дней 13 часов\"
    ```
 
-   Here is how FORMAT-PART is defined in the code:
+   Here is how FORMAT-PART function is defined in the code:
 "
   (format-part (include (:start (format-part function)
                          :end (%end-of-format-part% variable))
