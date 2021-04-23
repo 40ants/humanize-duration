@@ -4,16 +4,26 @@
 
 ## Table of Contents
 
-- [1 Introduction][7eec]
-- [2 Localization][90d6]
-    - [2.1 Russian localization][df81]
+- [1 humanize-duration ASDF System Details][9cef]
+- [2 Introduction][7eec]
+- [3 Localization][90d6]
+    - [3.1 Russian localization][df81]
 
 ###### \[in package HUMANIZE-DURATION with nicknames HUMANIZE-DURATION/CORE\]
 This is a small library usefult for time duration humanization.
 
+<a id='x-28-23A-28-2817-29-20BASE-CHAR-20-2E-20-22humanize-duration-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29'></a>
+
+## 1 humanize-duration ASDF System Details
+
+- Description: Provides HUMANIZE-DURATION function to make readable representation of LOCAL-TIME-DURATION:DURATION objects.
+- Licence: Unlicense
+- Author: Alexander Artemenko
+
+
 <a id='x-28HUMANIZE-DURATION-3A-40INTRO-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29'></a>
 
-## 1 Introduction
+## 2 Introduction
 
 It is different from `LOCAL-TIME-DURATION:HUMAN-READABLE-DURATION`, because allows
 to output only significant parts of a duration object.
@@ -103,13 +113,13 @@ Here is how you can localize output for your language
 
 <a id='x-28HUMANIZE-DURATION-3A-40LOCALIZATION-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29'></a>
 
-## 2 Localization
+## 3 Localization
 
 [`HUMANIZE-DURATION`][5740] comes with predefined Russian localization.
 
 <a id='x-28HUMANIZE-DURATION-2FRU-3A-40INDEX-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29'></a>
 
-### 2.1 Russian localization
+### 3.1 Russian localization
 
 ###### \[in package HUMANIZE-DURATION/RU\]
 This package includes a single function, useful to display duration in Russian language:
@@ -118,7 +128,7 @@ This package includes a single function, useful to display duration in Russian l
 
 - [function] **FORMAT-PART** *STREAM PART-TYPE PART*
 
-    This is Russian version of part formatter for `HUMANIZE-DURATION`
+    This is Russian version of part formatter for [`HUMANIZE-DURATION`][9cef]
 
 You can use it as an template, to define other languages.
 
@@ -221,6 +231,7 @@ CL-USER> (flet ((p (n)
   [5740]: #x-28HUMANIZE-DURATION-3AHUMANIZE-DURATION-20FUNCTION-29 "(HUMANIZE-DURATION:HUMANIZE-DURATION FUNCTION)"
   [7eec]: #x-28HUMANIZE-DURATION-3A-40INTRO-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29 "Introduction"
   [90d6]: #x-28HUMANIZE-DURATION-3A-40LOCALIZATION-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29 "Localization"
+  [9cef]: #x-28-23A-28-2817-29-20BASE-CHAR-20-2E-20-22humanize-duration-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29 "(#A((17) BASE-CHAR . \"humanize-duration\") ASDF/SYSTEM:SYSTEM)"
   [dc16]: #x-28HUMANIZE-DURATION-2FRU-3AFORMAT-PART-20-2840ANTS-DOC-2FLOCATIVES-3AINCLUDE-20-28-3ASTART-20-28HUMANIZE-DURATION-2FRU-3AFORMAT-PART-20FUNCTION-29-20-3AEND-20-28HUMANIZE-DURATION-2FRU-3A-3A-25END-OF-FORMAT-PART-25-20VARIABLE-29-29-20-3AHEADER-NL-20-22-60-60-60commonlisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29 "(HUMANIZE-DURATION/RU:FORMAT-PART (40ANTS-DOC/LOCATIVES:INCLUDE (:START (HUMANIZE-DURATION/RU:FORMAT-PART FUNCTION) :END (HUMANIZE-DURATION/RU::%END-OF-FORMAT-PART% VARIABLE)) :HEADER-NL \"```commonlisp\" :FOOTER-NL \"```\"))"
   [df81]: #x-28HUMANIZE-DURATION-2FRU-3A-40INDEX-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29 "Russian localization"
   [e1b0]: #x-28HUMANIZE-DURATION-3ADEFAULT-FORMAT-PART-20FUNCTION-29 "(HUMANIZE-DURATION:DEFAULT-FORMAT-PART FUNCTION)"

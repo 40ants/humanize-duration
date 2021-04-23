@@ -13,6 +13,7 @@
 (defsection @index (:title "Duration representation for humans!")
   "This is a small library usefult for time duration humanization."
 
+  (humanize-duration system)
   (@intro section)
   (@localization section))
 
