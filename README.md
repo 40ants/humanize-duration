@@ -4,7 +4,7 @@
 
 ## Table of Contents
 
-- [1 humanize-duration ASDF System Details][9cef]
+- [1 HUMANIZE-DURATION ASDF System Details][9cef]
 - [2 Introduction][7eec]
 - [3 Localization][90d6]
     - [3.1 Russian localization][df81]
@@ -14,7 +14,7 @@ This is a small library usefult for time duration humanization.
 
 <a id='x-28-23A-28-2817-29-20BASE-CHAR-20-2E-20-22humanize-duration-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29'></a>
 
-## 1 humanize-duration ASDF System Details
+## 1 HUMANIZE-DURATION ASDF System Details
 
 - Description: Provides HUMANIZE-DURATION function to make readable representation of LOCAL-TIME-DURATION:DURATION objects.
 - Licence: Unlicense
