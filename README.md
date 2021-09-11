@@ -61,7 +61,7 @@ Main job is done at `humanize-duration` ([`1`][3c87] [`2`][7f6d]):
 
 <a id="x-28HUMANIZE-DURATION-3AHUMANIZE-DURATION-20FUNCTION-29"></a>
 
-### [function](a75a) `humanize-duration:humanize-duration` duration &key stream (n-parts 2) (format-part #'default-format-part)
+### [function](46c2) `humanize-duration:humanize-duration` duration &key stream (n-parts 2) (format-part #'default-format-part)
 
 This is the better version of `LOCAL-TIME-DURATION:HUMAN-READABLE-DURATION`.
 
@@ -90,7 +90,7 @@ your own version. This could be useful if you want to support localization to ot
 
 <a id="x-28HUMANIZE-DURATION-3ADEFAULT-FORMAT-PART-20FUNCTION-29"></a>
 
-### [function](287a) `humanize-duration:default-format-part` stream part-type part
+### [function](7de5) `humanize-duration:default-format-part` stream part-type part
 
 This is should return a string with propertly pluralized form.
 
@@ -121,7 +121,7 @@ This package includes a single function, useful to display duration in Russian l
 
 <a id="x-28HUMANIZE-DURATION-2FRU-3AFORMAT-PART-20FUNCTION-29"></a>
 
-#### [function](b98c) `humanize-duration/ru:format-part` stream part-type part
+#### [function](22d3) `humanize-duration/ru:format-part` stream part-type part
 
 This is Russian version of part formatter for [`humanize-duration`][7f6d]
 
@@ -216,9 +216,9 @@ CL-USER> (flet ((p (n)
 
 [a0c4]: https://40ants.com/humanize-duration/
 [9168]: https://github.com/40ants/humanize-duration
-[a75a]: https://github.com/40ants/humanize-duration/blob/9d60b83f532e091f1b93deed70f6e7077418fa23/src/core.lisp#L104
-[287a]: https://github.com/40ants/humanize-duration/blob/9d60b83f532e091f1b93deed70f6e7077418fa23/src/core.lisp#L83
-[b98c]: https://github.com/40ants/humanize-duration/blob/9d60b83f532e091f1b93deed70f6e7077418fa23/src/ru.lisp#L98
+[46c2]: https://github.com/40ants/humanize-duration/blob/26b06bc5a0f3a6f85a39635ab47bb5922759eef4/src/core.lisp#L104
+[7de5]: https://github.com/40ants/humanize-duration/blob/26b06bc5a0f3a6f85a39635ab47bb5922759eef4/src/core.lisp#L83
+[22d3]: https://github.com/40ants/humanize-duration/blob/26b06bc5a0f3a6f85a39635ab47bb5922759eef4/src/ru.lisp#L98
 [7f6d]: index.html#x-28-23A-28-2817-29-20BASE-CHAR-20-2E-20-22humanize-duration-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29
 [f3c3]: index.html#x-28HUMANIZE-DURATION-2FRU-3AFORMAT-PART-20FUNCTION-29
 [0180]: index.html#x-28HUMANIZE-DURATION-3ADEFAULT-FORMAT-PART-20FUNCTION-29
