@@ -10,10 +10,22 @@
                 #:with-output-to-stream)
   (:import-from #:humanize-duration/changelog
                 #:@changelog)
+  (:import-from #:docs-config
+                #:docs-config)
   (:export #:@index #:@readme
            #:default-format-part
            #:humanize-duration))
 (in-package humanize-duration)
+
+
+(defmethod docs-config ((system (eql (asdf:find-system "humanize-duration"))))
+  ;; 40ANTS-DOC-THEME-40ANTS system will bring
+  ;; as dependency a full 40ANTS-DOC but we don't want
+  ;; unnecessary dependencies here:
+  (ql:quickload :40ants-doc-theme-40ants)
+  (list :theme
+        (find-symbol "40ANTS-THEME"
+                     (find-package "40ANTS-DOC-THEME-40ANTS"))))
 
 
 (defsection @index (:title "Duration representation for humans!"
