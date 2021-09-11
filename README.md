@@ -1,30 +1,26 @@
-<a id='x-28HUMANIZE-DURATION-3A-40INDEX-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29'></a>
+<a id="x-28HUMANIZE-DURATION-3A-40README-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29"></a>
 
 # Duration representation for humans!
 
-## Table of Contents
-
-- [1 humanize-duration ASDF System Details][9cef]
-- [2 Introduction][7eec]
-- [3 Localization][90d6]
-    - [3.1 Russian localization][df81]
-
-###### \[in package HUMANIZE-DURATION with nicknames HUMANIZE-DURATION/CORE\]
 This is a small library usefult for time duration humanization.
 
-<a id='x-28-23A-28-2817-29-20BASE-CHAR-20-2E-20-22humanize-duration-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29'></a>
+<a id="humanize-duration-asdf-system-details"></a>
 
-## 1 humanize-duration ASDF System Details
+## HUMANIZE-DURATION ASDF System Details
 
-- Description: Provides HUMANIZE-DURATION function to make readable representation of LOCAL-TIME-DURATION:DURATION objects.
-- Licence: Unlicense
-- Author: Alexander Artemenko
-- Homepage: [https://40ants.com/humanize-duration](https://40ants.com/humanize-duration)
-- Source control: [GIT](https://github.com/40ants/humanize-duration)
+* Description: Provides [`humanize-duration:humanize-duration`][3c87] function to make readable representation of `LOCAL-TIME-DURATION:DURATION` objects.
 
-<a id='x-28HUMANIZE-DURATION-3A-40INTRO-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29'></a>
+* Licence: Unlicense
 
-## 2 Introduction
+* Author: Alexander Artemenko
+
+* Homepage: [https://40ants.com/humanize-duration/][a0c4]
+
+* Source control: [`GIT`][9168]
+
+<a id="x-28HUMANIZE-DURATION-3A-3A-40INTRO-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29"></a>
+
+## Introduction
 
 It is different from `LOCAL-TIME-DURATION:HUMAN-READABLE-DURATION`, because allows
 to output only significant parts of a duration object.
@@ -34,6 +30,8 @@ then most probably it is already not important exactly how many minutes and seco
 passed since the moment.
 
 Compare these two examples:
+
+<a id="local-time-duration-human-readable-duration"></a>
 
 ### local-time-duration:human-readable-duration
 
@@ -46,6 +44,7 @@ CL-USER> (local-time-duration:human-readable-duration
                                         :nsec 10042))
 " 5 days 13 hours 14 seconds 10042 nsecs"
 ```
+<a id="humanize-duration-humanize-duration"></a>
 
 ### humanize-duration:humanize-duration
 
@@ -58,78 +57,73 @@ CL-USER> (humanize-duration:humanize-duration
                                         :nsec 10042))
 "5 days 13 hours"
 ```
+Main job is done at `humanize-duration` ([`1`][3c87] [`2`][7f6d]):
 
-Main job is done at [`HUMANIZE-DURATION`][5740]:
+<a id="x-28HUMANIZE-DURATION-3AHUMANIZE-DURATION-20FUNCTION-29"></a>
 
-<a id='x-28HUMANIZE-DURATION-3AHUMANIZE-DURATION-20FUNCTION-29'></a>
+### [function](a75a) `humanize-duration:humanize-duration` duration &key stream (n-parts 2) (format-part #'default-format-part)
 
-- [function] **HUMANIZE-DURATION** *DURATION &KEY STREAM (N-PARTS 2) (FORMAT-PART #'DEFAULT-FORMAT-PART)*
+This is the better version of `LOCAL-TIME-DURATION:HUMAN-READABLE-DURATION`.
 
-    This is the better version of `LOCAL-TIME-DURATION:HUMAN-READABLE-DURATION`.
-    
-    By default it returns only 2 most significant duration parts.
-    
-    If duration is 2 hour, 43 seconds and 15 nanoseconsds, then
-    function will return "2 hours 43 seconds":
-    
-    ```lisp
-    CL-USER> (ultralisp/utils/time:humanize-duration
-              (local-time-duration:duration :hour 2
-                                            :sec 43
-                                            :nsec 15))
-    "2 hours 43 seconds"
-    ```
-    
-    Also, you can pass a `:format-part` argument.
-    It should be a function of three arguments:
-    `(stream part-type part)` where `part-type` is a keyword
-    from this list:
-    
-    ```lisp
-    (list :weeks :days :hours :minutes :secs :nsecs)
-    ```
+By default it returns only 2 most significant duration parts.
 
+If duration is 2 hour, 43 seconds and 15 nanoseconsds, then
+function will return "2 hours 43 seconds":
 
-[`HUMANIZE-DURATION`][5740] accepts `:FORMAT-PART` argument, which is [`DEFAULT-FORMAT-PART`][e1b0] function by default:
+```lisp
+CL-USER> (ultralisp/utils/time:humanize-duration
+          (local-time-duration:duration :hour 2
+                                        :sec 43
+                                        :nsec 15))
+"2 hours 43 seconds"
+```
+Also, you can pass a `:format-part` argument.
+It should be a function of three arguments:
+`(stream part-type part)` where `part-type` is a keyword
+from this list:
+
+```lisp
+(list :weeks :days :hours :minutes :secs :nsecs)
+```
+`humanize-duration` ([`1`][3c87] [`2`][7f6d]) accepts `:FORMAT-PART` argument, which is [`default-format-part`][0180] function by default:
 your own version. This could be useful if you want to support localization to other languages.
 
-<a id='x-28HUMANIZE-DURATION-3ADEFAULT-FORMAT-PART-20FUNCTION-29'></a>
+<a id="x-28HUMANIZE-DURATION-3ADEFAULT-FORMAT-PART-20FUNCTION-29"></a>
 
-- [function] **DEFAULT-FORMAT-PART** *STREAM PART-TYPE PART*
+### [function](287a) `humanize-duration:default-format-part` stream part-type part
 
-    This is should return a string with propertly pluralized form.
-    
-    - `PART-TYPE` argument is a member of (list :weeks :days :hours :minutes :secs :nsecs).
-    
-    - `PART` is an integer.
-    
-    Here are possible results:
-    
-        (t :weeks 1) -> "1 week"
-        (t :weeks 5) -> "5 weeks"
-        (t :day 2) -> "2 days"
+This is should return a string with propertly pluralized form.
 
+* `PART-TYPE` argument is a member of (list :weeks :days :hours :minutes :secs :nsecs).
 
+* `PART` is an integer.
+
+Here are possible results:
+
+```text
+(t :weeks 1) -> "1 week"
+(t :weeks 5) -> "5 weeks"
+(t :day 2) -> "2 days"
+```
 Here is how you can localize output for your language
 
-<a id='x-28HUMANIZE-DURATION-3A-40LOCALIZATION-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29'></a>
+<a id="x-28HUMANIZE-DURATION-3A-3A-40LOCALIZATION-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29"></a>
 
-## 3 Localization
+## Localization
 
-[`HUMANIZE-DURATION`][5740] comes with predefined Russian localization.
+`humanize-duration` ([`1`][3c87] [`2`][7f6d]) comes with predefined Russian localization.
 
-<a id='x-28HUMANIZE-DURATION-2FRU-3A-40INDEX-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29'></a>
+<a id="x-28HUMANIZE-DURATION-2FRU-3A-3A-40INDEX-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29"></a>
 
-### 3.1 Russian localization
+### Russian localization
 
-###### \[in package HUMANIZE-DURATION/RU\]
 This package includes a single function, useful to display duration in Russian language:
 
-<a id='x-28HUMANIZE-DURATION-2FRU-3AFORMAT-PART-20FUNCTION-29'></a>
+<a id="x-28HUMANIZE-DURATION-2FRU-3AFORMAT-PART-20FUNCTION-29"></a>
 
-- [function] **FORMAT-PART** *STREAM PART-TYPE PART*
+#### [function](b98c) `humanize-duration/ru:format-part` stream part-type part
 
-    This is Russian version of part formatter for [`HUMANIZE-DURATION`][9cef]
+This is Russian version of part formatter for [`humanize-duration`][7f6d]
 
 You can use it as an template, to define other languages.
 
@@ -147,12 +141,9 @@ CL-USER> (humanize-duration:humanize-duration
           :format-part #'humanize-duration/ru:format-part)
 "5 дней 13 часов"
 ```
+Here is how [`format-part`][f3c3] function is defined in the code:
 
-Here is how [`FORMAT-PART`][49af] function is defined in the code:
-
-<a id='x-28HUMANIZE-DURATION-2FRU-3AFORMAT-PART-20-2840ANTS-DOC-2FLOCATIVES-3AINCLUDE-20-28-3ASTART-20-28HUMANIZE-DURATION-2FRU-3AFORMAT-PART-20FUNCTION-29-20-3AEND-20-28HUMANIZE-DURATION-2FRU-3A-3A-25END-OF-FORMAT-PART-25-20VARIABLE-29-29-20-3AHEADER-NL-20-22-60-60-60commonlisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29'></a>
-
-```commonlisp
+```
 (defun format-part (stream part-type part)
   "This is Russian version of part formatter for HUMANIZE-DURATION"
   (format stream "~d ~A"
@@ -168,14 +159,11 @@ Here is how [`FORMAT-PART`][49af] function is defined in the code:
                    (:nsecs '("наносекунда" "наносекунды" "наносекунд"))))))
 
 ```
-
 Russian version uses internal helper, to choose a correct word form:
 
-<a id='x-28HUMANIZE-DURATION-2FRU-3ACHOOSE-FORM-20-2840ANTS-DOC-2FLOCATIVES-3AINCLUDE-20-28-3ASTART-20-28HUMANIZE-DURATION-2FRU-3ACHOOSE-FORM-20FUNCTION-29-20-3AEND-20-28HUMANIZE-DURATION-2FRU-3A-3A-25END-OF-CHOOSE-FORM-25-20VARIABLE-29-29-20-3AHEADER-NL-20-22-60-60-60commonlisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29'></a>
-
-```commonlisp
+```
 (defun choose-form (n &rest forms)
-  "This function is bassed on this gettext formula:
+  "This function is based on this gettext formula:
 
    ```
    Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;
@@ -202,7 +190,6 @@ Russian version uses internal helper, to choose a correct word form:
        (third forms)))))
 
 ```
-
 Applied to a different numbers it produces the following:
 
 ```
@@ -227,14 +214,15 @@ CL-USER> (flet ((p (n)
 12 яблок
 ```
 
-
-  [49af]: #x-28HUMANIZE-DURATION-2FRU-3AFORMAT-PART-20FUNCTION-29 "(HUMANIZE-DURATION/RU:FORMAT-PART FUNCTION)"
-  [5740]: #x-28HUMANIZE-DURATION-3AHUMANIZE-DURATION-20FUNCTION-29 "(HUMANIZE-DURATION:HUMANIZE-DURATION FUNCTION)"
-  [7eec]: #x-28HUMANIZE-DURATION-3A-40INTRO-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29 "Introduction"
-  [90d6]: #x-28HUMANIZE-DURATION-3A-40LOCALIZATION-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29 "Localization"
-  [9cef]: #x-28-23A-28-2817-29-20BASE-CHAR-20-2E-20-22humanize-duration-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29 "(#A((17) BASE-CHAR . \"humanize-duration\") ASDF/SYSTEM:SYSTEM)"
-  [df81]: #x-28HUMANIZE-DURATION-2FRU-3A-40INDEX-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29 "Russian localization"
-  [e1b0]: #x-28HUMANIZE-DURATION-3ADEFAULT-FORMAT-PART-20FUNCTION-29 "(HUMANIZE-DURATION:DEFAULT-FORMAT-PART FUNCTION)"
+[a0c4]: https://40ants.com/humanize-duration/
+[9168]: https://github.com/40ants/humanize-duration
+[a75a]: https://github.com/40ants/humanize-duration/blob/9d60b83f532e091f1b93deed70f6e7077418fa23/src/core.lisp#L104
+[287a]: https://github.com/40ants/humanize-duration/blob/9d60b83f532e091f1b93deed70f6e7077418fa23/src/core.lisp#L83
+[b98c]: https://github.com/40ants/humanize-duration/blob/9d60b83f532e091f1b93deed70f6e7077418fa23/src/ru.lisp#L98
+[7f6d]: index.html#x-28-23A-28-2817-29-20BASE-CHAR-20-2E-20-22humanize-duration-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29
+[f3c3]: index.html#x-28HUMANIZE-DURATION-2FRU-3AFORMAT-PART-20FUNCTION-29
+[0180]: index.html#x-28HUMANIZE-DURATION-3ADEFAULT-FORMAT-PART-20FUNCTION-29
+[3c87]: index.html#x-28HUMANIZE-DURATION-3AHUMANIZE-DURATION-20FUNCTION-29
 
 * * *
-###### \[generated by [40ANTS-DOC](https://40ants.com/doc)\]
+###### [generated by [40ANTS-DOC](https://40ants.com/doc/)]

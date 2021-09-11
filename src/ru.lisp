@@ -32,16 +32,12 @@
    Here is how FORMAT-PART function is defined in the code:
 "
   (format-part (include (:start (format-part function)
-                         :end (%end-of-format-part% variable))
-                         :header-nl "```commonlisp"
-                         :footer-nl "```"))
+                         :end (%end-of-format-part% variable))))
   
   "Russian version uses internal helper, to choose a correct word form:"
 
   (choose-form (include (:start (choose-form function)
-                         :end (%end-of-choose-form% variable))
-                         :header-nl "```commonlisp"
-                         :footer-nl "```"))
+                         :end (%end-of-choose-form% variable))))
 
   "Applied to a different numbers it produces the following:
 

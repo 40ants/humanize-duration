@@ -4,18 +4,29 @@
   (:import-from #:local-time-duration)
   (:import-from #:humanize-duration/ru)
   (:import-from #:40ants-doc
-                #:defsection)
+                #:defsection
+                #:defsection-copy)
   (:import-from #:with-output-to-stream
-                #:with-output-to-stream))
+                #:with-output-to-stream)
+  (:import-from #:humanize-duration/changelog
+                #:@changelog)
+  (:export #:@index #:@readme
+           #:default-format-part
+           #:humanize-duration))
 (in-package humanize-duration)
 
 
-(defsection @index (:title "Duration representation for humans!")
+(defsection @index (:title "Duration representation for humans!"
+                    :ignore-words ("GIT"
+                                   "LOCAL-TIME-DURATION:DURATION"
+                                   "LOCAL-TIME-DURATION:HUMAN-READABLE-DURATION"))
   "This is a small library usefult for time duration humanization."
 
   (humanize-duration system)
   (@intro section)
   (@localization section))
+
+(defsection-copy @readme @index)
 
 
 (defsection @intro (:title "Introduction")
@@ -66,7 +77,7 @@
 
 (defsection @localization (:title "Localization")
   "HUMANIZE-DURATION comes with predefined Russian localization."
-  (humanize-duration/ru:@index section))
+  (humanize-duration/ru::@index section))
 
 
 (defun default-format-part (stream part-type part)
