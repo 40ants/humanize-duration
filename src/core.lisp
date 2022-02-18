@@ -32,7 +32,7 @@
                     :ignore-words ("GIT"
                                    "LOCAL-TIME-DURATION:DURATION"
                                    "LOCAL-TIME-DURATION:HUMAN-READABLE-DURATION"))
-  "This is a small library usefult for time duration humanization."
+  "This is a small library useful for time duration humanization."
 
   (humanize-duration system)
   (@intro section)

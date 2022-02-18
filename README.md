@@ -2,7 +2,7 @@
 
 # Duration representation for humans!
 
-This is a small library usefult for time duration humanization.
+This is a small library useful for time duration humanization.
 
 <a id="humanize-duration-asdf-system-details"></a>
 
